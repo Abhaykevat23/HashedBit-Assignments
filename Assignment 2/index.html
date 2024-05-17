@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Check Javascript Code In Console Log</h1>
+</body>
+<script>
+    function foo() {
+        x = 1;
+        function x() { }
+        var x = '2';
+        return x;
+    }
+    console.log(typeof foo()); // This returns String
+
+
+    function foo1() {
+        return x;
+        x = 1;
+
+        function x() { }
+
+        var x = '2';
+    }
+    console.log(typeof foo1()); // This returns function
+
+    var x = 1;
+    function foo2() {
+        x = 10;
+        return;
+        function x() { }
+    }
+    foo2();
+    console.log(x);// This returns 1
+</script>
+
+</html>
