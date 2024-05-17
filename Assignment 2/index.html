@@ -8,36 +8,69 @@
 </head>
 
 <body>
-    <h1>Check Javascript Code In Console Log</h1>
+    <div style="display: flex;">
+        <h3>Even Numbers : &nbsp; </h3>
+        <h3 id="demo1"></h3>
+    </div>
+    <div style="display: flex;">
+        <h3>Calcy : &nbsp; </h3>
+        <h3 id="demo2"></h3>
+    </div>
+    <div style="display: flex;">
+        <h3>Salary Tax : &nbsp; </h3>
+        <h3 id="demo3"></h3>
+    </div>
 </body>
 <script>
-    function foo() {
-        x = 1;
-        function x() { }
-        var x = '2';
-        return x;
+    let store=" ";
+    for(let i = 2 ; i <= 100 ; i+=2 ){
+        store += i + " ";
     }
-    console.log(typeof foo()); // This returns String
+    document.getElementById("demo1").innerHTML=store;
 
+    //=======================================================
+    
+    function calcy(a,b,choice){
+        switch(choice){
+            case 1:
+                return a+b;
 
-    function foo1() {
-        return x;
-        x = 1;
+            case 2:
+                return a-b;
 
-        function x() { }
+            case 3:
+                return a*b;
 
-        var x = '2';
+            case 4:
+                return a/b;
+        }
     }
-    console.log(typeof foo1()); // This returns function
 
-    var x = 1;
-    function foo2() {
-        x = 10;
-        return;
-        function x() { }
+    document.getElementById("demo2").innerHTML=calcy(10,20,1);
+
+    //=======================================================
+
+    function Tax(salary) {
+    let tax = 0;
+    
+    switch (true) {
+        case (salary > 0 && salary <= 500000):
+            tax = salary * 0;
+            break;
+        case (salary > 500000 && salary <= 1000000):
+            tax = salary * 10/100 ;
+            break;
+        case (salary > 1000000 && salary <= 1500000):
+            tax = salary * 20/100;
+            break;
+        case (salary > 1500000):
+            tax = salary * 30/100;
+            break;
     }
-    foo2();
-    console.log(x);// This returns 1
+    return tax;
+}
+document.getElementById("demo3").innerHTML=Tax(750000);
+
 </script>
 
 </html>

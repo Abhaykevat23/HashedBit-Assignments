@@ -1,60 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment Webpage</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
 </head>
+
 <body>
-    <header>
-        <div class="logo">
-            <img src="image1.png" alt="Logo">
-        </div>
-        
-        <nav class="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="https://github.com">Github</a>
-        </nav>
-    </header>
-
-    <nav class="menubar">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <div class="sidebar">
-            <h3>Sidebar</h3>
-            <p>This is some custom data for the sidebar.</p>
-        </div>
-
-        <main>
-            <div class="box" id="box">
-                <h2>Content 1</h2>
-                <img src="image1.png" alt="Image 1">
-                <p>Description 1</p>
-            </div>
-            <div class="box">
-                <h2>Content 2</h2>
-                <img src="image2.png" alt="Image 2">
-                <p>Description 2</p>
-            </div>
-            <div class="box">
-                <h2>Content 3</h2>
-                <img src="image3.png" alt="Image 3">
-                <p>Description 3</p>
-            </div>
-        </main>
-    </div>
-
-    <footer>
-        <p>Sample text for the footer</p>
-    </footer>
+    <h1>Check Javascript Code In Console Log</h1>
 </body>
+<script>
+    function foo() {
+        x = 1;
+        function x() { }
+        var x = '2';
+        return x;
+    }
+    console.log(typeof foo()); // This returns String
+
+
+    function foo1() {
+        return x;
+        x = 1;
+
+        function x() { }
+
+        var x = '2';
+    }
+    console.log(typeof foo1()); // This returns function
+
+    var x = 1;
+    function foo2() {
+        x = 10;
+        return;
+        function x() { }
+    }
+    foo2();
+    console.log(x);// This returns 1
+</script>
+
 </html>

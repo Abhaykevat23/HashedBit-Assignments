@@ -8,69 +8,37 @@
 </head>
 
 <body>
-    <div style="display: flex;">
-        <h3>Even Numbers : &nbsp; </h3>
-        <h3 id="demo1"></h3>
-    </div>
-    <div style="display: flex;">
-        <h3>Calcy : &nbsp; </h3>
-        <h3 id="demo2"></h3>
-    </div>
-    <div style="display: flex;">
-        <h3>Salary Tax : &nbsp; </h3>
-        <h3 id="demo3"></h3>
-    </div>
+
 </body>
+
 <script>
-    let store=" ";
-    for(let i = 2 ; i <= 100 ; i+=2 ){
-        store += i + " ";
-    }
-    document.getElementById("demo1").innerHTML=store;
+    let states = ['Rajasthan', 'Chhattisgadh', 'Kolkata', 'Kashmir', 'Karnataka', 'Andhra Pradesh', 'Uttar Pradesh', 'Oddisa', 'Maharastra', 'Gujarat'];
+    console.log(states.filter(state => !/^[AEIOUaeiou]/.test(state)));
 
-    //=======================================================
-    
-    function calcy(a,b,choice){
-        switch(choice){
-            case 1:
-                return a+b;
 
-            case 2:
-                return a-b;
 
-            case 3:
-                return a*b;
 
-            case 4:
-                return a/b;
+    let str = "I Am Abhay Kevat";
+    let wordsArray = str.split(' ');
+    let reversedArray = wordsArray.reverse();
+    let joinstr = reversedArray.join(' ');
+    console.log(joinstr);
+
+
+
+    let string="Hello I am abhay kevat and i am a student.";
+    let string2=string.toLowerCase();
+    let con=0;
+    let vow=0;
+    for (let i = 0; i < string2.length; i++) {
+        if(string2.charAt(i) == 'a' && string2.charAt(i) == 'e' && string2.charAt(i) == 'i' && string2.charAt(i) == 'o' && string2.charAt(i) == 'u' ){
+            vow++;
+        }
+        else{
+            con++;
         }
     }
-
-    document.getElementById("demo2").innerHTML=calcy(10,20,1);
-
-    //=======================================================
-
-    function Tax(salary) {
-    let tax = 0;
-    
-    switch (true) {
-        case (salary > 0 && salary <= 500000):
-            tax = salary * 0;
-            break;
-        case (salary > 500000 && salary <= 1000000):
-            tax = salary * 10/100 ;
-            break;
-        case (salary > 1000000 && salary <= 1500000):
-            tax = salary * 20/100;
-            break;
-        case (salary > 1500000):
-            tax = salary * 30/100;
-            break;
-    }
-    return tax;
-}
-document.getElementById("demo3").innerHTML=Tax(750000);
-
+    console.log("Vowels : " + vow + " , Consonent : " + con);
 </script>
 
 </html>
