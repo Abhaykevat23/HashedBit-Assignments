@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex;">
+        <h3>Even Numbers : &nbsp; </h3>
+        <h3 id="demo1"></h3>
+    </div>
+    <div style="display: flex;">
+        <h3>Calcy : &nbsp; </h3>
+        <h3 id="demo2"></h3>
+    </div>
+    <div style="display: flex;">
+        <h3>Salary Tax : &nbsp; </h3>
+        <h3 id="demo3"></h3>
+    </div>
+</body>
+<script>
+    let store=" ";
+    for(let i = 2 ; i <= 100 ; i+=2 ){
+        store += i + " ";
+    }
+    document.getElementById("demo1").innerHTML=store;
+
+    //=======================================================
+    
+    function calcy(a,b,choice){
+        switch(choice){
+            case 1:
+                return a+b;
+
+            case 2:
+                return a-b;
+
+            case 3:
+                return a*b;
+
+            case 4:
+                return a/b;
+        }
+    }
+
+    document.getElementById("demo2").innerHTML=calcy(10,20,1);
+
+    //=======================================================
+
+    function Tax(salary) {
+    let tax = 0;
+    
+    switch (true) {
+        case (salary > 0 && salary <= 500000):
+            tax = salary * 0;
+            break;
+        case (salary > 500000 && salary <= 1000000):
+            tax = salary * 10/100 ;
+            break;
+        case (salary > 1000000 && salary <= 1500000):
+            tax = salary * 20/100;
+            break;
+        case (salary > 1500000):
+            tax = salary * 30/100;
+            break;
+    }
+    return tax;
+}
+document.getElementById("demo3").innerHTML=Tax(750000);
+
+</script>
+
+</html>
