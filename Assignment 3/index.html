@@ -26,19 +26,63 @@
 
 
 
-    let string="Hello I am abhay kevat and i am a student.";
-    let string2=string.toLowerCase();
-    let con=0;
-    let vow=0;
+    let string = "Hello I am abhay kevat.";
+    let string2 = string.toLowerCase();
+    let con = 0;
+    let vow = 0;
     for (let i = 0; i < string2.length; i++) {
-        if(string2.charAt(i) == 'a' && string2.charAt(i) == 'e' && string2.charAt(i) == 'i' && string2.charAt(i) == 'o' && string2.charAt(i) == 'u' ){
+        if (string2.charAt(i) == 'a' || string2.charAt(i) == 'e' || string2.charAt(i) == 'i' || string2.charAt(i) == 'o' || string2.charAt(i) == 'u') {
             vow++;
         }
-        else{
+        else {
             con++;
         }
     }
     console.log("Vowels : " + vow + " , Consonent : " + con);
+
+
+    function change(string3, wrong, correct) {
+        let spt = string3.split(' ');
+        for (let i = 0; i < spt.length; i++) {
+            if (spt[i] == wrong) {
+                spt[i] = correct;
+            }
+        }
+        return spt;
+    }
+    console.log(change("Hello this is wrong idealogy", "idealogy", "idea"));
+
+
+
+
+    let arr = [1, 4, 8, 3, 6, 9, 2, 10];
+    console.log(arr.filter(a => a > 5));
+
+
+
+
+    const students = [
+        { name: "Ram", scores: [80, 70, 60] },
+        { name: "Mohan", scores: [80, 70, 90] },
+        { name: "Sai", scores: [60, 70, 80] },
+        { name: "Hemang", scores: [90, 90, 80, 80] }
+    ];
+    const output = students.map(student => {
+        const average = student.scores.reduce((sum, score) => sum + score, 0) / student.scores.length;
+        return { name: student.name, average: average };
+    });
+    console.log(output);
+
+
+    let paragraph="hello evryone my name is abhay kevat and i am learning at ..";
+    let count2=0;
+    for(let i=0;i<paragraph.split(' ').length;i++){
+        count2++;
+    }
+    console.log(count2);
+
+
+    
 </script>
 
 </html>
