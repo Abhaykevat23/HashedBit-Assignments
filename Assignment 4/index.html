@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Assignment</title>
+    <style>
+        .day {
+            background-color: white;
+            color: black;
+        }
+
+        .night {
+            background-color: black;
+            color: gold;
+        }
+
+        .button_night {
+            background-color: darkblue;
+            color: white;
+        }
+
+        .button_day {
+            background-color: white;
+            color: black;
+        }
+
+        html,
+        body {
+            margin: 0px;
+            height: 100%;
+        }
+
+        #app {
+            height: 100%;
+            padding: 10px;
+        }
+
+        .text-here {
+            font-size: 55px;
+            font-family: sans-serif;
+            color: black;
+            text-decoration: none;
+            font-style: normal;
+            font-weight: normal;
+            line-height: normal;
+            text-align: left;
+            letter-spacing: normal;
+            word-spacing: normal;
+            /* font-weight: 700; */
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div>
+        <h1>DOM Assignment</h1>
+        <div id="app" class="day">
+            <p>I am a HashedBit student, ready to become an awesome full stack developer</p>
+            <button onclick="swapTheme()" id="swap" class="button_day">Toggle theme</button>
+        </div>
+        
+        <p>----------------------------------------------------------------------------------</p>
+        
+        <div id="container" style="border: 2px solid black;">
+        </div>
+
+        <p>-----------------------------------------------------------------------------------</p>
+        
+        <h1>I am a headline made with HTML</h1>
+        <br />
+        <p id="useless-paragraph">Useless paragraph.</p>
+        <br />
+        <button onclick="toggleVisibility()">Toggle Button</button>
+
+        <p>----------------------------------------------------------------------------------</p>
+        <p>----------------------------------------------------------------------------------</p>
+
+
+
+        <div class='text-here' id='text-container'>This is some example text</div>
+
+
+        <input type="text" id="colorbox" value="">
+
+        <button id="colorchange" onclick="changecolor()">Change Colour</button>
+
+        <br><br>
+
+        <input type="range" id="fontsize" min="10" max="100" value="55" onchange="rangechange()">
+        <br><br>
+
+
+        <button id="italic" class="stylebt" onclick="fontstyleitalic()">Italics</button>
+        <button id="underline" class="stylebt" onclick="fontstyleunderline()">Underline</button>
+        <button id="bold" class="stylebt" onclick="fontstylebold()">Bold</button>
+
+        <br><br>
+
+
+        <select id="list" onchange="fontfamily()">
+            <option value="serif">Serif</option>
+            <option value="sans-serif">Sans-Serif</option>
+            <option value="monospace">Monospace</option>
+            <option value="cursive">Cursive</option>
+            <option value="fantasy">Fantasy</option>
+        </select>
+
+        <br><br>
+
+        <button id="getstyle" onclick="getcss()">Get CSS</button>
+
+        <br><br>
+        <p id="css-props"></p>
+    </div>
+</body>
+<script>
+    let bgcolor = document.getElementById("app").style.backgroundColor = "white";
+    let color = document.getElementById("app").style.color = "black";
+    function swapTheme() {
+        if (bgcolor == "white") {
+            color = document.getElementById("app").style.color = "white";
+            bgcolor = document.getElementById("app").style.backgroundColor = "black";
+        }
+        else {
+            color = document.getElementById("app").style.color = "black";
+            bgcolor = document.getElementById("app").style.backgroundColor = "white";
+        }
+
+    }
+
+
+    //---------------------------------------------------------------
+
+    function createDiv(width, height, text) {
+        let newdiv = document.createElement("div");
+        newdiv.style.width = width + "px";
+        newdiv.style.height = height + "px";
+
+        newdiv.textContent = text;
+        let container = document.getElementById("container");
+
+        container.appendChild(newdiv);
+    }
+    Window.createDiv = createDiv(20, 70, "hello-xkabxbakbaks-world");
+
+
+    //---------------------------------------------------------
+
+    let show = document.getElementById("useless-paragraph").style.display = "block";
+    function toggleVisibility() {
+        if (show == "block") {
+            show = document.getElementById("useless-paragraph").style.display = "none";
+        }
+        else {
+            show = document.getElementById("useless-paragraph").style.display = "block";
+        }
+    }
+
+
+    //----------------------------------------------------------------
+    function changecolor(){
+        let colorname=document.getElementById("colorbox").value;
+        document.getElementById("text-container").style.color=colorname;
+    }
+    function rangechange(){
+        let range=document.getElementById("fontsize").value;
+        document.getElementById("text-container").style.fontSize=range+"px";
+    }
+    function fontstyleitalic(){
+        document.getElementById("text-container").style.fontStyle="italic";
+    }
+    function fontstyleunderline(){
+        document.getElementById("text-container").style.textDecoration="underline";
+    }
+    function fontstylebold(){
+        document.getElementById("text-container").style.fontWeight=700;
+    }
+    function fontfamily(){
+        let family=document.getElementById("list").value;
+        document.getElementById("text-container").style.fontFamily=family;
+    }
+    function getcss(){
+        document.getElementById("text-container").textContent="Sorry I just Don't know about this..";
+    }
+    
+
+
+</script>
+
+</html>
