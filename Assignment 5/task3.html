@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3 Assignment 5</title>
+    <style>
+        .strike {
+            text-decoration: line-through solid rgb(0, 0, 0);
+        }
+
+        .todo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .todo-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .todo-input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .todo-button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .todo-item-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .todo-item {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .complete-btn,
+        .trash-btn {
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .complete-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .trash-btn {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>My Todo list</header>
+    <div class="todo-container">
+        <form class="todo-form">
+            <input type="text" class="todo-input" placeholder="Add a task">
+            <button class="todo-button" type="submit">ADD</button>
+        </form>
+        <ul class="todo-list"></ul>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const todoForm = document.querySelector('.todo-form');
+        const todoInput = document.querySelector('.todo-input');
+        const todoList = document.querySelector('.todo-list');
+
+        todoForm.addEventListener('submit', addTodo);
+
+        function addTodo(event) {
+            event.preventDefault();
+
+            const taskValue = todoInput.value.trim();
+            if (taskValue === '') return;
+
+            const todoItemContainer = document.createElement('div');
+            todoItemContainer.classList.add('todo-item-container');
+
+            const todoItem = document.createElement('li');
+            todoItem.textContent = taskValue;
+            todoItem.classList.add('todo-item');
+
+            const completeBtn = document.createElement('button');
+            completeBtn.textContent = 'Complete';
+            completeBtn.classList.add('complete-btn');
+            completeBtn.addEventListener('click', completeTodo);
+
+            const trashBtn = document.createElement('button');
+            trashBtn.textContent = 'Delete';
+            trashBtn.classList.add('trash-btn');
+            trashBtn.addEventListener('click', deleteTodo);
+
+            todoItemContainer.appendChild(todoItem);
+            todoItemContainer.appendChild(completeBtn);
+            todoItemContainer.appendChild(trashBtn);
+            todoList.appendChild(todoItemContainer);
+
+            todoInput.value = '';
+        }
+
+        function completeTodo(event) {
+            const todoItem = event.target.parentElement.querySelector('.todo-item');
+            todoItem.style.textDecoration = todoItem.style.textDecoration === 'line-through solid rgb(0, 0, 0)' ? '' : 'line-through solid rgb(0, 0, 0)';
+        }
+
+        function deleteTodo(event) {
+            const todoItemContainer = event.target.parentElement;
+            todoItemContainer.remove();
+        }
+    });
+</script>
+
+
+<!-- Task Statement
+
+Make a Todo List in which users can 1. Add a task to the list 2. Delete a task from the list 3. Mark a task as completed
+1. Add a task to the list: The users will type a task in the text input box and when they click on the ADD button, a div element should get added within the  < ul class="todo-list"> </ul> 
+Note: Use preventDefault() Event Method to prevent it from submitting a form, since the Add button in HTML is of type submit.
+
+The new div element added within the
+<ul class="todo-list"> </ul>  must contain the following in the given order: 
+(a) A list element displaying the name of the task entered by the user in the input box. It should have a class todo-item
+(b) A 'Complete button' with class complete-btn
+(c) A 'Delete button' with class trash-btn
+Note: Ensure the order of the above 3 elements are maintained.
+
+2. Mark a task as completed: On clicking the completed button, the task name present inside the list element should get strike-through. e.g. make a coffee and on clicking the completed button again the strike-through should be removed. e.g. make a coffee
+Note: Only use the CSS property  text-decoration: line-through solid rgb(0, 0, 0);  to implement this. The completed button must have complete-btn as a class and should function as explained, otherwise your test cases will not pass.
+
+3. Delete a task from the list: On clicking the Delete Button, the corresponding component that contains that Delete button should get deleted, and removed from the < ul class="todo-list"> </ul> The Delete button must have trash-btn as a class and should function as explained above, otherwise your test cases will not pass. Do not make any changes to the HTML file. -->
+
+</html>

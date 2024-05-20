@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch Assignment 6</title>
+</head>
+
+<body>
+    <div id="time">00:00:00</div>
+    <button onclick="start()" id="start">Start</button>
+    <button onclick="pause()" id="pause" disabled>Pause</button>
+    <button onclick="stop()" id="stop" disabled>Stop</button>
+</body>
+<script>
+    let startbtn = document.getElementById("start");
+    let pausebtn = document.getElementById("pause");
+    let stopbtn = document.getElementById("stop");
+    let timeDisplay = document.getElementById("time");
+    let hours = 0, minutes = 0, seconds = 0;
+    let intervalId = null;
+    updateDisplay();
+    function formatTime(num) {
+        return num.toString().padStart(2, '0');
+    }
+    function startTimer() {
+        intervalId = setInterval(() => {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes === 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+            updateDisplay();
+        }, 1000);
+    }
+    function updateDisplay() {
+        timeDisplay.textContent = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
+    }
+    function start() {
+        pausebtn.disabled = false;
+        stopbtn.disabled = false;
+        startbtn.disabled = true;
+        startTimer();
+    }
+    function pause() {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+            pausebtn.textContent = 'Continue';
+        } else {
+            startTimer();
+            pausebtn.textContent = 'Pause';
+        }
+    }
+    function stop() {
+
+        clearInterval(intervalId);
+        intervalId = null;
+        hours = 0;
+        minutes = 0;
+        seconds = 0;
+        updateDisplay();
+        startbtn.disabled = false;
+        pausebtn.disabled = true;
+        stopbtn.disabled = true;
+        pausebtn.textContent = 'Pause';
+    }
+</script>
+
+</html>
+
+<!-- One of the very important features of javascript is Timing events. There are javaScript functions which after a given time execute a callback function. We will utilize them to make our own stopwatch. Acceptance Criteria
+This stopwatch should show passed hours, minutes and seconds.
+Format of the output Time string should be HH:MM:SS
+Render 3 buttons start, stop, pause.
+Stopwatch should start on click event of start button.
+Initially pause and stop button should be disabled. They should be enabled after stopwatch starts.
+start button should be disabled once the stopwatch starts.
+Initial time should be 00:00:00.
+Pause and stop button have the normal functionality to pause and stop the stopwatch.
+When timer is entering pause state, change text of pause button to continue
+If the stopwatch is continued after a pause, change the text of continue button to pause(like before pause state)
+When stop button is clicked, restart the stopwatch (text 00:00:00, disabled pause, stop buttons and enable start button ).
+Stopwatch should not loose much time(if timer is paused after 0.5 sec then it should not loose that time and continue counting from 0.5 sec).
+Clear the timers
+
+Sample - https://d3dyfaf3iutrxo.cloudfront.net/thumbnail/assignment/question/86eed0097db844f18880f9356a678b04.png
+ -->
