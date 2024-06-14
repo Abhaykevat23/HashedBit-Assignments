@@ -1,0 +1,41 @@
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.heading {
+    text-align: center;
+}
+
+.form {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 30px;
+    padding: 2rem;
+}
+.form input{
+    font-size: 30px;
+    border-radius: 20px;
+    padding-left: 2rem;
+}
+.form i{
+    margin-left: 1rem;
+}
+
+.tasklist {
+    margin-top: 3rem;
+    width: 300px;
+    margin-left: 37rem;
+}
+.task{
+    text-align: center;
+    border: 1px solid;
+    margin-top: .5rem;
+    font-size: 20px;
+
+}
+
+.remove_all {
+    text-align: center;
+    margin-top: 1rem;
+}
